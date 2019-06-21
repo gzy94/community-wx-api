@@ -2,7 +2,7 @@ package com.spirit.community.admin.config;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authz.AuthorizationException;
-import com.spirit.community.core.util.ResponseUtil;
+import com.spirit.community.common.util.ResponseUtil;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.ControllerAdvice;

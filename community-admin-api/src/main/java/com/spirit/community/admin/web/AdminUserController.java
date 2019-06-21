@@ -1,12 +1,12 @@
 package com.spirit.community.admin.web;
 
+import com.spirit.community.wx.domain.LitemallUser;
+import com.spirit.community.wx.service.LitemallUserService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import com.spirit.community.admin.annotation.RequiresPermissionsDesc;
-import com.spirit.community.core.util.ResponseUtil;
-import com.spirit.community.core.validator.Order;
-import com.spirit.community.core.validator.Sort;
-import com.spirit.community.db.domain.LitemallUser;
-import com.spirit.community.db.service.LitemallUserService;
+import com.spirit.community.common.util.ResponseUtil;
+import com.spirit.community.common.validator.Order;
+import com.spirit.community.common.validator.Sort;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

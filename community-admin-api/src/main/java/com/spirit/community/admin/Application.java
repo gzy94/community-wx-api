@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@SpringBootApplication(scanBasePackages = {"com.spirit.community.db", "com.spirit.community.core", "com.spirit.community.admin"})
+@SpringBootApplication(scanBasePackages = {"com.spirit.community.db", "com.spirit.community.common", "com.spirit.community.admin"})
 @MapperScan("com.spirit.community.db.dao")
 @EnableTransactionManagement
 @EnableScheduling

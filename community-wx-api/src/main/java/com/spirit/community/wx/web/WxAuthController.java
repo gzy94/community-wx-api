@@ -3,15 +3,15 @@ package com.spirit.community.wx.web;
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.bean.WxMaJscode2SessionResult;
 import com.spirit.community.wx.annotation.LoginUser;
+import com.spirit.community.wx.domain.LitemallUser;
+import com.spirit.community.wx.service.LitemallUserService;
 import com.spirit.community.wx.service.UserTokenManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import com.spirit.community.core.util.ResponseUtil;
-import com.spirit.community.db.domain.LitemallUser;
-import com.spirit.community.db.service.LitemallUserService;
-import com.spirit.community.wx.dto.UserInfo;
-import com.spirit.community.wx.dto.WxLoginInfo;
-import com.spirit.community.core.util.IpUtil;
+import com.spirit.community.common.util.ResponseUtil;
+import com.spirit.community.wx.model.dto.UserInfo;
+import com.spirit.community.wx.model.dto.WxLoginInfo;
+import com.spirit.community.common.util.IpUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -45,9 +45,11 @@ public class WxAuthController {
      * @return 登录结果
      */
     @PostMapping("login_by_weixin")
-    public Object loginByWeixin(@RequestBody WxLoginInfo wxLoginInfo, HttpServletRequest request) {
+    public Object loginByWeixin(@RequestBody @Validated WxLoginInfo wxLoginInfo, HttpServletRequest request) {
         String code = wxLoginInfo.getCode();
         UserInfo userInfo = wxLoginInfo.getUserInfo();
+
+
         if (code == null || userInfo == null) {
             return ResponseUtil.badArgument();
         }
@@ -59,7 +61,7 @@ public class WxAuthController {
             sessionKey = result.getSessionKey();
             openId = result.getOpenid();
         } catch (Exception e) {
-            e.printStackTrace();
+            logger.error(e);
         }
 
         if (sessionKey == null || openId == null) {
@@ -80,7 +82,6 @@ public class WxAuthController {
             user.setLastLoginTime(LocalDateTime.now());
             user.setLastLoginIp(IpUtil.getIpAddr(request));
             user.setSessionKey(sessionKey);
-
             userService.add(user);
         } else {
             user.setLastLoginTime(LocalDateTime.now());
@@ -99,6 +100,8 @@ public class WxAuthController {
         result.put("userInfo", userInfo);
         return ResponseUtil.ok(result);
     }
+
+
     @GetMapping("info")
     public Object info(@LoginUser Integer userId) {
         if (userId == null) {

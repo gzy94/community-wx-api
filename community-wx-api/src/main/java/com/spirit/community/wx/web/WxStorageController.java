@@ -1,12 +1,13 @@
 package com.spirit.community.wx.web;
 
-import com.spirit.community.core.storage.StorageService;
-import com.spirit.community.core.util.CharUtil;
-import com.spirit.community.core.util.ResponseUtil;
+
+import com.spirit.community.common.util.CharUtil;
+import com.spirit.community.common.util.ResponseUtil;
+import com.spirit.community.wx.domain.LitemallStorage;
+import com.spirit.community.wx.service.LitemallStorageService;
+import com.spirit.community.wx.service.StorageService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import com.spirit.community.db.domain.LitemallStorage;
-import com.spirit.community.db.service.LitemallStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;

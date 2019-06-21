@@ -3,7 +3,7 @@ package com.spirit.community.admin;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.spirit.community.core.util.bcrypt.BCryptPasswordEncoder;
+import com.spirit.community.common.util.bcrypt.BCryptPasswordEncoder;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 

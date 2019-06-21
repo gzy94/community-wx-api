@@ -1,8 +1,8 @@
 package com.spirit.community.wx.service;
 
-import com.spirit.community.db.domain.LitemallUser;
-import com.spirit.community.db.service.LitemallUserService;
-import com.spirit.community.wx.dto.UserInfo;
+import com.spirit.community.wx.domain.LitemallUser;
+
+import com.spirit.community.wx.model.dto.UserInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
